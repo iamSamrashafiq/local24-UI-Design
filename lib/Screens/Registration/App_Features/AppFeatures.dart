@@ -117,10 +117,10 @@ class _AppFeaturesState extends State<AppFeatures> {
                   child: ExpandablePanel(
                     header:  RichText(
                       text: TextSpan(
-                        text: 'App Home Feed Display  \n',
+                        text: 'App HomeScreen Feed Display  \n',
                         style:featureSubHeading,
                         children: const <TextSpan>[
-                          TextSpan(text: 'Please choose Your Home Feed News',style:featureTxt),
+                          TextSpan(text: 'Please choose Your HomeScreen Feed News',style:featureTxt),
                         ],
                       ),
                     ),

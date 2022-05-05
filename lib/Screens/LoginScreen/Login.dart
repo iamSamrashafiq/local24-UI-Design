@@ -3,6 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:local24/Component/CustomButton_widget.dart';
 import 'package:local24/Component/CustomTextField.dart';
 import 'package:local24/Constant/App_Constant.dart';
+import 'package:local24/Routes/Route_Constant.dart';
+import 'package:local24/Screens/Bottom_Navigation/BottomBar.dart';
+import 'package:local24/Screens/HomeScreen/Home.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key key}) : super(key: key);
@@ -90,7 +93,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 width: size.width*0.9,
                 child: CustomButton(
                   text: "Login",
-                  press: (){},
+                  press: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>BottomNavBar()));
+                  },
                   radius: 25,
                   height: 0.0,
                   width: 0.0,

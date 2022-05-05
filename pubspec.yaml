@@ -41,6 +41,9 @@ dependencies:
   flutter_svg: ^0.20.0-nullsafety.3
   fswitch: ^1.1.2
   expandable: ^5.0.1
+  animations: any
+  font_awesome_flutter: ^10.1.0
+  badges: ^2.0.2
 
 dev_dependencies:
   flutter_test:

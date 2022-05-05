@@ -1,4 +1,5 @@
 import 'package:local24/Routes/Route_Constant.dart';
+import 'package:local24/Screens/Bottom_Navigation/BottomBar.dart';
 import 'package:local24/Screens/IntroScreen/IntroScreen.dart';
 import 'package:local24/Screens/LoginScreen/Login.dart';
 import 'package:local24/Screens/Registration/App_Features/AppFeatures.dart';
@@ -52,6 +53,12 @@ class RouteGenerator{
       case RouteConstant.appFeature:
         return PageTransition(
           child: AppFeatures(),
+          type: PageTransitionType.rightToLeft,
+          duration: animationDuration,
+        );
+      case RouteConstant.home:
+        return PageTransition(
+          child: BottomNavBar(),
           type: PageTransitionType.rightToLeft,
           duration: animationDuration,
         );

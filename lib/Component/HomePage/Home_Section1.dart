@@ -1,0 +1,320 @@
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:local24/Constant/App_Constant.dart';
+
+
+class HomeSection1 extends StatefulWidget {
+  const HomeSection1({Key key}) : super(key: key);
+
+  @override
+  State<HomeSection1> createState() => _HomeSection1State();
+}
+
+class _HomeSection1State extends State<HomeSection1> {
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+            child: ListView.builder(
+              itemCount: 2,
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              physics: NeverScrollableScrollPhysics(),
+              itemBuilder: (context,index){
+                return Container(
+                  margin: EdgeInsets.only(top:10 ),
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)
+                    ),
+                    elevation: 0,
+                    child: Column(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                child: Text('New Restaurant open in Town', style: postTitle,),
+                              ),
+                              FaIcon(FontAwesomeIcons.ellipsis,color: Colors.grey,)
+                            ],
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          child: Row(
+                            children: [
+                              Container(
+                                child: CircleAvatar(
+                                  radius: 25,
+                                  backgroundImage: NetworkImage('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
+                                  )
+                                 // child: Image.network('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.only(left: 5),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text('local360',style: postUserName,),
+                                        Container(
+                                          child: Image.asset(verified,width: size.width*0.04,),
+                                        )
+                                      ],
+                                    ),
+                                    Container(
+                                      width: size.width*0.7,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text('New Delhi',style: postDetail,),
+                                          Text('5 hour ago',style: postDetail,textAlign: TextAlign.right,),
+
+                                        ],
+                                      ),
+                                    )
+
+
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 5),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                              child: Image.network(
+                                  'https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500')
+                          ),
+                        ),
+                        SizedBox(height: 15,),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width: size.width*0.45,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Container(
+                                      child:FaIcon(FontAwesomeIcons.solidHeart,color: iconColor,) ,
+                                    ),
+                                    Container(
+                                      child:FaIcon(FontAwesomeIcons.solidComment,color:  iconColor,) ,
+                                    ),
+                                    Container(
+                                      child:FaIcon(FontAwesomeIcons.solidPaperPlane,color:  iconColor,) ,
+                                    ),
+                                    Container(
+                                      child:FaIcon(FontAwesomeIcons.facebook,color: iconColor,) ,
+                                    ),
+                                    Container(
+                                      child:Image.asset(postWhatsapp),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                child:FaIcon(FontAwesomeIcons.solidBookmark,color:  iconColor,) ,
+                              ),
+
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 5,),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 10,),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: size.width*0.45,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text('8',style: postView,),
+                                    Text('12',style: postView,),
+                                    Text('1002',style: postView,),
+                                    Text('199',style: postView,),
+                                    Text('12',style: postView,)
+                                  ],
+                                ),
+                              ),
+
+                            ],
+                          ),
+                        ),
+
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+
+
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)
+                ),
+                elevation: 2,
+                child: Column(
+                  children: [
+                    SizedBox(height: 10,),
+                    Center(
+                      child: Container(
+                        child: Text('Advertisement',style: advertisement,),
+                      ),
+                    ),
+                    SizedBox(height: 10,),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: Image.network('https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
+                    ),
+                    SizedBox(height: 5,),
+                    Container(
+                      height: size.height*0.06,
+                      decoration: BoxDecoration(
+                          color:shopNow,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(10),
+                          bottomRight: Radius.circular(10),
+                        )
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Container(
+                            child: Text('Shop Now',style: advertisementShop,),
+                          ),
+                          Container(
+                            padding: EdgeInsets.symmetric(vertical: 5,horizontal: 5),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle
+                            ),
+                            child: Icon(Icons.arrow_forward,),
+                          )
+                        ],
+                      ),
+                    )
+
+                  ],
+                ),
+              ),
+            ),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20)
+              ),
+              elevation: 2,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+               children: [
+                 SizedBox(height: 10,),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 13,vertical: 5),
+                    child: Text('Breaking News Stories',style: breakingNewTitle,),
+                  ),
+                 ListView.builder(
+                   shrinkWrap: true,
+                   itemCount: breakingNew.length,
+                   scrollDirection: Axis.vertical,
+                   physics: NeverScrollableScrollPhysics(),
+                   itemBuilder: (context,index){
+                     return Container(
+                       height: size.height*0.15,
+                      padding: EdgeInsets.symmetric(horizontal: 5,vertical: 5),
+                       child: Card(
+                         shape: RoundedRectangleBorder(
+                           borderRadius: BorderRadius.circular(10),
+                         ),
+                         elevation: 2,
+                         child: Row(
+                           children: [
+                             Container(
+                               child: ClipRRect(
+                                   borderRadius: BorderRadius.circular(10),
+                                   child: Image.network(breakingNew[index].breakingImage,width: size.width*0.23,height: size.height*0.12,fit: BoxFit.cover,)
+                               ),
+                             ),
+                             Container(
+                               padding: EdgeInsets.only(left: 6,top: 6),
+                               child: Column(
+                                 crossAxisAlignment: CrossAxisAlignment.start,
+                                 children: [
+                                   Container(
+                                     width:size.width*0.6,
+                                     child: Text(breakingNew[index].headline,style: TextStyle(fontFamily: poppinsBold,fontSize: 12),),
+                                   ),
+                                   Row(
+                                     children: [
+                                       Text('Local360', style: breakingNewLocal,),
+                                       Container(
+                                         child: Image.asset(verified,width: size.width*0.06,),
+                                       )
+                                     ],
+                                   ),
+                                   Container(
+                                     padding: EdgeInsets.only(left: size.width*0.3),
+                                     child: Text('May 12,2022 9:30PM',style: breakingNewTime,),
+                                   )
+                                 ],
+                               ),
+                             )
+                           ],
+                         ),
+                       ),
+                     );
+                   },
+                 ),
+                 SizedBox(height: 10,),
+               ],
+              ),
+            ),
+          ),
+
+
+
+
+          ],
+        ),
+      ),
+    );
+  }
+}
+class BreakingNews{
+  String headline;
+  String breakingImage;
+
+  BreakingNews({this.headline,this.breakingImage,});
+}
+
+List<BreakingNews> breakingNew =[
+  BreakingNews(headline: 'Story About Something that going on', breakingImage: 'https://br24.com/wp-content/uploads/Br24_Blog_FoodPhotography_OverheadAngle.jpg'),
+  BreakingNews(headline: 'Story About Something that going on', breakingImage: 'https://br24.com/wp-content/uploads/Br24_Blog_FoodPhotography_OverheadAngle.jpg'),
+  BreakingNews(headline: 'Story About Something that going on', breakingImage: 'https://br24.com/wp-content/uploads/Br24_Blog_FoodPhotography_OverheadAngle.jpg'),
+  BreakingNews(headline: 'Story About Something that going on', breakingImage: 'https://br24.com/wp-content/uploads/Br24_Blog_FoodPhotography_OverheadAngle.jpg'),
+];
+
+

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:local24/Component/AppBar/appbar.dart';
 import 'package:local24/Constant/App_Constant.dart';
-import 'package:local24/Screens/Bottom_Navigation/fab.dart';
 import 'package:local24/Screens/HomeScreen/Home.dart';
 
 
@@ -48,27 +47,26 @@ class _BottomNavBarState extends State<BottomNavBar> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: CustomAppBar(),
-      // key: globalKey,
-      // appBar: AppBar(
-      //   // backgroundColor: color,
-      //   elevation: 0,
-      //   title: Text(_title),
-      //   leading: backIcon
-      //       ? const BackButton()
-      //       : IconButton(
-      //     icon: const Icon(
-      //       Icons.sort,
-      //       color: Colors.white,
-      //       size: 28,
-      //     ),
-      //     onPressed: () => globalKey.currentState.openDrawer(),
-      //   ),
-      // ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
           // Navigator.pushNamed(context, RouteConstants.filterPage);
         },
-        child: const FaIcon(FontAwesomeIcons.house),
+        backgroundColor: Colors.transparent,
+        child: Container(
+            height: 60,
+            width: 60,
+          decoration: BoxDecoration(
+              shape: BoxShape.circle,
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+                end: Alignment(0.8, 0.0),
+              colors: [
+                Color(0xff2376b6),
+                Color(0xff80C1E7),
+              ]
+            )
+          ),
+            child: Center(child: Image.asset(home))),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: PageTransitionSwitcher(
@@ -93,11 +91,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
           unselectedLabelStyle:bottomNavLabelStyle ,
           selectedLabelStyle:bottomNavLabelSelectedStyle ,
           items: const [
-             BottomNavigationBarItem(icon:  FaIcon(FontAwesomeIcons.locationPin,color: Colors.black,size: 14,),label: 'Local',),
-            BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.arrowTrendUp,color: Colors.black,size: 14),label: 'Trending'),
+             BottomNavigationBarItem(icon:  FaIcon(FontAwesomeIcons.locationPin,color: Colors.black,size: 16,),label: 'Local',),
+            BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.arrowTrendUp,color: Colors.black,size: 16),label: 'Trending'),
             BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.arrowTrendUp,color: Colors.black,size: 1),label: ''),
-            BottomNavigationBarItem(icon:FaIcon(FontAwesomeIcons.video,color: Colors.black,size: 14),label: 'Video'),
-            BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.ellipsis,color: Colors.black,size: 14),label: 'More'),
+            BottomNavigationBarItem(icon:FaIcon(FontAwesomeIcons.video,color: Colors.black,size: 16),label: 'Video'),
+            BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.ellipsis,color: Colors.black,size: 16),label: 'More'),
 
           ],
         ),

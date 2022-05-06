@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:local24/Component/HomePage/Home_Section1.dart';
+import 'package:local24/Component/HomePage/HomeSection1/Home_Section1.dart';
 import 'package:local24/Constant/App_Constant.dart';
 
 class HomePage extends StatefulWidget {

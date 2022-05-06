@@ -15,7 +15,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0,
-      leadingWidth: 130,
+      leadingWidth: 170,
       leading:Container(
         child:  Image.asset(appBarImage,fit: BoxFit.cover,),
       ) ,
@@ -29,14 +29,6 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
              Icon(Icons.account_circle_outlined,color: Colors.black,),
-            //   IconButton(
-            //     onPressed: (){},
-            //     icon: Icon(Icons.account_circle_outlined,color: Colors.black,),
-            //   ),
-            //   IconButton(
-            //     onPressed: (){},
-            //     icon: Icon(Icons.search,color: Colors.black,),
-            //   ),
              Icon(Icons.search,color: Colors.black),
               Badge(
                 position: BadgePosition.topEnd(end: -4),

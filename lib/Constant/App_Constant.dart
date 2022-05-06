@@ -20,6 +20,7 @@ const twitter = 'assets/images/icon/twitter.png';
 const whatsapp = 'assets/images/icon/whatsapp.png';
 const verified = 'assets/images/icon/verified-user.png';
 const postWhatsapp = 'assets/images/icon/postwhatsapp.png';
+const home =   'assets/images/icon/homeicon.png';
 
 
 
@@ -63,3 +64,7 @@ const advertisementShop = TextStyle(fontFamily:poppinsRegular,fontSize: 15,color
 const breakingNewTitle = TextStyle(fontSize: 15,fontFamily: poppinsBold,color: shopNow);
 const breakingNewLocal= TextStyle(fontSize: 12,fontFamily: poppinsRegular,color: Colors.black);
 const breakingNewTime= TextStyle(fontSize: 10,fontFamily: poppinsRegular,color: Colors.black);
+
+const topStoryTitle=TextStyle(fontSize: 15,fontFamily: poppinsBold,color: Colors.black);
+
+

@@ -67,4 +67,8 @@ const breakingNewTime= TextStyle(fontSize: 10,fontFamily: poppinsRegular,color: 
 
 const topStoryTitle=TextStyle(fontSize: 15,fontFamily: poppinsBold,color: Colors.black);
 
+//Real Estate Listing
+const listingTypeName = TextStyle(fontFamily: poppinsRegular, fontSize: 16, color: Colors.black54);
+const listingData = TextStyle(fontFamily: poppinsRegular, fontSize: 14, color: Colors.black54);
+
 

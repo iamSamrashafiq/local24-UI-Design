@@ -2,6 +2,7 @@ import 'package:local24/Constant/App_Constant.dart';
 import 'package:flutter/material.dart';
 
 List<String> interests = [];
+List<String> interestDummy =['Tag 1','Tag 2','Tag 3'];
 
 // chips helper
 Widget chipBuilder({String title, Function onTap}) {

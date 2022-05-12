@@ -46,6 +46,8 @@ dependencies:
   badges: ^2.0.2
   video_player: ^2.4.0
   flutter_carousel_slider:
+  google_maps_flutter: ^2.1.5
+
 
 dev_dependencies:
   flutter_test:

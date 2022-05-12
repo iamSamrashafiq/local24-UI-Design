@@ -7,9 +7,6 @@ class RouteConstant{
   static const String detailPost = 'DetailPost';
   static const String appFeature = 'appFeature';
   static const String home = 'home';
+  static const String addListing='addListing';
 
-  // static const String registerStep2 = 'step2';
-  // static const String registerStep3 = 'step3';
-  // static const String registerStep4 = 'step4';
-  // static const String registerStep5 = 'step5';
 }

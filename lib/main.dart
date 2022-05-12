@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:local24/Constant/App_Constant.dart';
+import 'package:local24/Screens/RealEstate_Listing/CreateListing.dart';
 import 'Routes/App_Routes.dart';
 import 'Routes/Route_Constant.dart';
 
@@ -21,9 +22,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: RouteConstant.initialRoute,
-      onGenerateRoute: RouteGenerator.generateRoute,
-      // home:CreateAccount(),
+      // initialRoute: RouteConstant.initialRoute,
+      // onGenerateRoute: RouteGenerator.generateRoute,
+      home:CreateListing(),
     );
   }
 }

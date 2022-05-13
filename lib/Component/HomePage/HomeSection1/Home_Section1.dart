@@ -4,12 +4,15 @@ import 'package:flutter_carousel_slider/carousel_slider.dart';
 import 'package:flutter_carousel_slider/carousel_slider_indicators.dart';
 import 'package:flutter_carousel_slider/carousel_slider_transforms.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:local24/Component/HomePage/HomeAds/Google_BannerAds.dart';
+import 'package:local24/Component/HomePage/HomeAds/MobAds.dart';
 import 'package:local24/Component/HomePage/HomeSection1/Home_Section1UserData.dart';
 import 'package:local24/Component/HomePage/HomeSection1/Home_Section1_PostSocial.dart';
 import 'package:local24/Constant/App_Constant.dart';
 import 'package:video_player/video_player.dart';
-
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'Home_VideoItem.dart';
+import 'package:facebook_audience_network/facebook_audience_network.dart';
 
 class HomeSection1 extends StatefulWidget {
   const HomeSection1({Key key}) : super(key: key);
@@ -19,6 +22,7 @@ class HomeSection1 extends StatefulWidget {
 }
 
 class _HomeSection1State extends State<HomeSection1> {
+
   CarouselSliderController _carouselSliderController=CarouselSliderController();
   VideoPlayerController controller;
   final urlLandscapeVideo =
@@ -28,7 +32,10 @@ class _HomeSection1State extends State<HomeSection1> {
   @override
   void initState() {
     super.initState();
-
+    FacebookAudienceNetwork.init(
+        testingId: "a77955ee-3304-4635-be65-81029b0f5201", //optional
+        // iOSAdvertiserTrackingEnabled: fale //default false
+    );
     controller = VideoPlayerController.network(urlLandscapeVideo)
       ..addListener(() => setState(() {}))
       ..setLooping(true)
@@ -64,108 +71,113 @@ class _HomeSection1State extends State<HomeSection1> {
                 scrollDirection: Axis.vertical,
                 physics: NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
-                  return Container(
-                    margin: EdgeInsets.only(top: 10),
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                      elevation: 0,
-                      child: Column(
-                        children: [
-                          // Container(
-                          //   margin: EdgeInsets.symmetric(
-                          //       vertical: 10, horizontal: 10),
-                          //   child: Row(
-                          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          //     children: [
-                          //       Container(
-                          //         child: Text(
-                          //           'New Restaurant open in Town',
-                          //           style: postTitle,
-                          //         ),
-                          //       ),
-                          //       FaIcon(
-                          //         FontAwesomeIcons.ellipsis,
-                          //         color: Colors.grey,
-                          //       )
-                          //     ],
-                          //   ),
-                          // ),
-                          // Container(
-                          //   margin: EdgeInsets.symmetric(horizontal: 10),
-                          //   child: Row(
-                          //     children: [
-                          //       Container(
-                          //         child: CircleAvatar(
-                          //             radius: 25,
-                          //             backgroundImage: NetworkImage(
-                          //               'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-                          //             )
-                          //             // child: Image.network('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'),
-                          //             ),
-                          //       ),
-                          //       Container(
-                          //         padding: EdgeInsets.only(left: 5),
-                          //         child: Column(
-                          //           crossAxisAlignment:
-                          //               CrossAxisAlignment.start,
-                          //           children: [
-                          //             Row(
-                          //               children: [
-                          //                 Text(
-                          //                   'local360',
-                          //                   style: postUserName,
-                          //                 ),
-                          //                 Container(
-                          //                   child: Image.asset(
-                          //                     verified,
-                          //                     width: size.width * 0.04,
-                          //                   ),
-                          //                 )
-                          //               ],
-                          //             ),
-                          //             Container(
-                          //               width: size.width * 0.7,
-                          //               child: Row(
-                          //                 mainAxisAlignment:
-                          //                     MainAxisAlignment.spaceBetween,
-                          //                 children: [
-                          //                   Text(
-                          //                     'New Delhi',
-                          //                     style: postDetail,
-                          //                   ),
-                          //                   Text(
-                          //                     '5 hour ago',
-                          //                     style: postDetail,
-                          //                     textAlign: TextAlign.right,
-                          //                   ),
-                          //                 ],
-                          //               ),
-                          //             )
-                          //           ],
-                          //         ),
-                          //       )
-                          //     ],
-                          //   ),
-                          // ),
-                          HomeSection1UserData(),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            padding: EdgeInsets.symmetric(horizontal: 5),
-                            child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.network(
-                                    'https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500')),
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
+                  return GestureDetector(
+                    onTap: (){
+                      print('Open this Card');
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(top: 10),
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        elevation: 0,
+                        child: Column(
+                          children: [
+                            // Container(
+                            //   margin: EdgeInsets.symmetric(
+                            //       vertical: 10, horizontal: 10),
+                            //   child: Row(
+                            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            //     children: [
+                            //       Container(
+                            //         child: Text(
+                            //           'New Restaurant open in Town',
+                            //           style: postTitle,
+                            //         ),
+                            //       ),
+                            //       FaIcon(
+                            //         FontAwesomeIcons.ellipsis,
+                            //         color: Colors.grey,
+                            //       )
+                            //     ],
+                            //   ),
+                            // ),
+                            // Container(
+                            //   margin: EdgeInsets.symmetric(horizontal: 10),
+                            //   child: Row(
+                            //     children: [
+                            //       Container(
+                            //         child: CircleAvatar(
+                            //             radius: 25,
+                            //             backgroundImage: NetworkImage(
+                            //               'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
+                            //             )
+                            //             // child: Image.network('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'),
+                            //             ),
+                            //       ),
+                            //       Container(
+                            //         padding: EdgeInsets.only(left: 5),
+                            //         child: Column(
+                            //           crossAxisAlignment:
+                            //               CrossAxisAlignment.start,
+                            //           children: [
+                            //             Row(
+                            //               children: [
+                            //                 Text(
+                            //                   'local360',
+                            //                   style: postUserName,
+                            //                 ),
+                            //                 Container(
+                            //                   child: Image.asset(
+                            //                     verified,
+                            //                     width: size.width * 0.04,
+                            //                   ),
+                            //                 )
+                            //               ],
+                            //             ),
+                            //             Container(
+                            //               width: size.width * 0.7,
+                            //               child: Row(
+                            //                 mainAxisAlignment:
+                            //                     MainAxisAlignment.spaceBetween,
+                            //                 children: [
+                            //                   Text(
+                            //                     'New Delhi',
+                            //                     style: postDetail,
+                            //                   ),
+                            //                   Text(
+                            //                     '5 hour ago',
+                            //                     style: postDetail,
+                            //                     textAlign: TextAlign.right,
+                            //                   ),
+                            //                 ],
+                            //               ),
+                            //             )
+                            //           ],
+                            //         ),
+                            //       )
+                            //     ],
+                            //   ),
+                            // ),
+                            HomeSection1UserData(), //copy paste this page code here to make every thing work in Index Id
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              padding: EdgeInsets.symmetric(horizontal: 5),
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.network(
+                                      'https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500')),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
 
-                          HomeSection1PostSocial(),
+                            HomeSection1PostSocial(),
 
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   );
@@ -173,11 +185,11 @@ class _HomeSection1State extends State<HomeSection1> {
               ),
             ),
 
-            ///Video Card
+            ///Video Card for native
             Container(
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
               child: ListView.builder(
-                itemCount: 2,
+                itemCount: 1,
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 physics: NeverScrollableScrollPhysics(),
@@ -225,7 +237,56 @@ class _HomeSection1State extends State<HomeSection1> {
               ),
 
             ),
-
+            ///video for youtube
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              child: ListView.builder(
+                itemCount: 1,
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                physics: NeverScrollableScrollPhysics(),
+                itemBuilder: (context,index){
+                  String videoId;
+                  videoId = YoutubePlayer.convertUrlToId("https://www.youtube.com/watch?v=mhxoXm8lWIo");
+                  YoutubePlayerController _controller = YoutubePlayerController(
+                    initialVideoId:videoId,
+                    flags: YoutubePlayerFlags(
+                      autoPlay: false,
+                      mute: true,
+                      loop: false,
+                      forceHD: false,
+                      isLive: false,
+                    ),
+                  );
+                  return Container(
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      elevation: 0,
+                      child: Column(
+                        children: [
+                          HomeSection1UserData(),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            width: double.infinity,
+                            child:YoutubePlayer(
+                              controller: _controller,
+                              liveUIColor: Colors.amber,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          HomeSection1PostSocial(),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
             /// Top stories
             Card(
               shape: RoundedRectangleBorder(
@@ -235,7 +296,7 @@ class _HomeSection1State extends State<HomeSection1> {
               child: Stack(
                 children: [
                   Container(
-                    height: 300,
+                    height: size.height*0.5,
                     width: 400,
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                     child: CarouselSlider.builder(
@@ -503,6 +564,56 @@ class _HomeSection1State extends State<HomeSection1> {
                 ),
               ),
             ),
+
+            SizedBox(height: 10,),
+
+            ///FaceBook Ads Card
+            Container(
+              color: Colors.black54,
+              height:100 ,
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)
+                ),
+                elevation: 0,
+                child: Column(
+                  children: [
+                    FacebookNativeAd(
+                      placementId:"YOUR_PLACEMENT_ID",   /// add your placement id heree
+                      adType: NativeAdType.NATIVE_AD,
+                      width: double.infinity,
+                      bannerAdSize:NativeBannerAdSize.HEIGHT_100,
+                      backgroundColor: Colors.blue,
+                      titleColor: Colors.white,
+                      descriptionColor: Colors.white,
+                      buttonColor: Colors.deepPurple,
+                      buttonTitleColor: Colors.white,
+                      buttonBorderColor: Colors.white,
+                      keepAlive: true, //set true if you do not want adview to refresh on widget rebuild
+                      keepExpandedWhileLoading: false, // set false if you want to collapse the native ad view when the ad is loading
+                      expandAnimationDuraion: 300, //in milliseconds. Expands the adview with animation when ad is loaded
+                      listener: (result, value) {
+                        print("Native Ad: $result --> $value");
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            SizedBox(height: 10,),
+            /// Google Mob Ads
+            MobileNativeAds(),
+
+            GoogleBannerAds(),
+
+
+
+
+
+
           ],
         ),
       ),

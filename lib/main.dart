@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:local24/Constant/App_Constant.dart';
 import 'package:local24/Screens/RealEstate_Listing/CreateListing.dart';
 import 'Routes/App_Routes.dart';
@@ -8,6 +9,8 @@ import 'Routes/Route_Constant.dart';
 
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
   runApp(const MyApp());
 }
 
@@ -22,9 +25,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // initialRoute: RouteConstant.initialRoute,
-      // onGenerateRoute: RouteGenerator.generateRoute,
-      home:CreateListing(),
+      initialRoute: RouteConstant.initialRoute,
+      onGenerateRoute: RouteGenerator.generateRoute,
+      // home:CreateListing(),
     );
   }
 }

@@ -47,6 +47,9 @@ dependencies:
   video_player: ^2.4.0
   flutter_carousel_slider:
   google_maps_flutter: ^2.1.5
+  youtube_player_flutter: ^8.0.0
+  facebook_audience_network: ^1.0.1
+  google_mobile_ads: ^1.2.0
 
 
 dev_dependencies:

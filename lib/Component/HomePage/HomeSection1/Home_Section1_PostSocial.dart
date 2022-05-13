@@ -2,9 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:local24/Constant/App_Constant.dart';
 
-class HomeSection1PostSocial extends StatelessWidget {
+
+
+class HomeSection1PostSocial extends StatefulWidget {
   const HomeSection1PostSocial({Key key}) : super(key: key);
 
+  @override
+  State<HomeSection1PostSocial> createState() => _HomeSection1PostSocialState();
+}
+
+class _HomeSection1PostSocialState extends State<HomeSection1PostSocial> {
+  Color  _color = iconColor;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -21,40 +29,73 @@ class HomeSection1PostSocial extends StatelessWidget {
                   mainAxisAlignment:
                   MainAxisAlignment.spaceAround,
                   children: [
-                    Container(
-                      child: FaIcon(
-                        FontAwesomeIcons.solidHeart,
-                        color: iconColor,
+                    InkWell(
+                      onTap: (){
+                        print('Liked Heart');
+                        setState(() {
+                          _color= color;
+                        });
+                      },
+                      child: Container(
+                        child: FaIcon(
+                          FontAwesomeIcons.solidHeart,
+                          color: _color,
+                        ),
                       ),
                     ),
-                    Container(
-                      child: FaIcon(
-                        FontAwesomeIcons.solidComment,
-                        color: iconColor,
+                    InkWell(
+                      onTap: (){
+                        print('Comment Please');
+                      },
+                      child: Container(
+                        child: FaIcon(
+                          FontAwesomeIcons.solidComment,
+                          color: iconColor,
+                        ),
                       ),
                     ),
-                    Container(
-                      child: FaIcon(
-                        FontAwesomeIcons.solidPaperPlane,
-                        color: iconColor,
+                    InkWell(
+                      onTap: (){
+                        print('Share this post');
+                      },
+                      child: Container(
+                        child: FaIcon(
+                          FontAwesomeIcons.solidPaperPlane,
+                          color: iconColor,
+                        ),
                       ),
                     ),
-                    Container(
-                      child: FaIcon(
-                        FontAwesomeIcons.facebook,
-                        color: iconColor,
+                    InkWell(
+                      onTap: (){
+                        print('Share on facebook');
+                      },
+                      child: Container(
+                        child: FaIcon(
+                          FontAwesomeIcons.facebook,
+                          color: iconColor,
+                        ),
                       ),
                     ),
-                    Container(
-                      child: Image.asset(postWhatsapp),
+                    InkWell(
+                      onTap: (){
+                        print('Share  on Whatsapp');
+                      },
+                      child: Container(
+                        child: Image.asset(postWhatsapp),
+                      ),
                     ),
                   ],
                 ),
               ),
-              Container(
-                child: FaIcon(
-                  FontAwesomeIcons.solidBookmark,
-                  color: iconColor,
+              InkWell(
+                onTap: (){
+                  print('Saved');
+                },
+                child: Container(
+                  child: FaIcon(
+                    FontAwesomeIcons.solidBookmark,
+                    color: iconColor,
+                  ),
                 ),
               ),
             ],

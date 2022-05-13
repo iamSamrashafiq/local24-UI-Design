@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:local24/Component/CustomButton_widget.dart';
-import 'package:local24/Component/CustomOutline_Button.dart';
+import 'package:local24/Component/Widget/CustomButton_widget.dart';
+import 'package:local24/Component/Widget/CustomOutline_Button.dart';
 import 'package:local24/Constant/App_Constant.dart';
 import 'package:local24/Screens/RealEstate_Listing/Listing1.dart';
 import 'package:local24/Screens/RealEstate_Listing/Listing2.dart';

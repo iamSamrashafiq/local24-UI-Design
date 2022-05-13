@@ -1,5 +1,5 @@
-import 'package:local24/Component/DropdownButton_Style.dart';
-import 'package:local24/Component/TextField_widget.dart';
+import 'package:local24/Component/Widget/DropdownButton_Style.dart';
+import 'package:local24/Component/Widget/TextField_widget.dart';
 import 'package:local24/Constant/App_Constant.dart';
 import 'package:flutter/material.dart';
 

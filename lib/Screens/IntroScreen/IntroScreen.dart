@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:local24/Component/CustomButton_widget.dart';
-import 'package:local24/Component/CustomOutline_Button.dart';
+import 'package:local24/Component/Widget/CustomButton_widget.dart';
+import 'package:local24/Component/Widget/CustomOutline_Button.dart';
 import 'package:local24/Constant/App_Constant.dart';
 import 'package:local24/Routes/Route_Constant.dart';
 

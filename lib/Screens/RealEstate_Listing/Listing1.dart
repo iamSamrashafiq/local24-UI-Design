@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:local24/Component/Chip_widget.dart';
-import 'package:local24/Component/CustomButton_widget.dart';
-import 'package:local24/Component/DropdownButton_Style.dart';
-import 'package:local24/Component/TextField_widget.dart';
+import 'package:local24/Component/Widget/Chip_widget.dart';
+import 'package:local24/Component/Widget/CustomButton_widget.dart';
+import 'package:local24/Component/Widget/DropdownButton_Style.dart';
+import 'package:local24/Component/Widget/TextField_widget.dart';
 import 'package:local24/Constant/App_Constant.dart';
 
 

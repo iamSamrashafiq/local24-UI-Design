@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:local24/Component/AboutTiles.dart';
+import 'package:local24/Component/Widget/AboutTiles.dart';
 
 class AppFeatureAboutView extends StatelessWidget {
   const AppFeatureAboutView({Key key}) : super(key: key);

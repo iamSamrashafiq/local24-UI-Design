@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:local24/Component/SocialTile.dart';
+import 'package:local24/Component/Widget/SocialTile.dart';
 import 'package:local24/Constant/App_Constant.dart';
 
 class SocialMediaView extends StatelessWidget {

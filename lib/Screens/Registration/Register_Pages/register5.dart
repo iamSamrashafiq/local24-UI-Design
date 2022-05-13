@@ -1,5 +1,5 @@
-import 'package:local24/Component/CustomButton_widget.dart';
-import 'package:local24/Component/TextField_widget.dart';
+import 'package:local24/Component/Widget/CustomButton_widget.dart';
+import 'package:local24/Component/Widget/TextField_widget.dart';
 import 'package:local24/Constant/App_Constant.dart';
 import 'package:flutter/material.dart';
 import 'package:local24/Routes/Route_Constant.dart';

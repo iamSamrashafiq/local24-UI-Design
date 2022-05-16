@@ -15,6 +15,34 @@ class _HomePageState extends State<HomePage>  with SingleTickerProviderStateMixi
   int _selectedIndex = 0;
   @override
   void initState() {
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async{
+      await showDialog<String>(
+          context: context,
+          builder: (BuildContext context) => new Dialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Column(
+              children: [
+                const SizedBox(height: 12),
+                Container(
+                  alignment: Alignment.topLeft,
+                  child: IconButton(
+                    onPressed: (){
+                      Navigator.of(context).pop();
+                    },
+                    icon: Icon(Icons.clear),
+                  ),
+                ),
+                //here place Ad widget inside a container
+
+              ],
+            ),
+          )
+      );
+    });
+
     _tabController = TabController(vsync: this, length: list.length);
     var val;
     _tabController.addListener(() {

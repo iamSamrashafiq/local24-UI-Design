@@ -194,41 +194,46 @@ class _HomeSection1State extends State<HomeSection1> {
                 scrollDirection: Axis.vertical,
                 physics: NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index){
-                  return Container(
-                    margin: EdgeInsets.only(top: 10),
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                      elevation: 0,
-                      child: Column(
-                        children: [
-                          HomeSection1UserData(),
-                          SizedBox(
-                            height: 10,
-                          ),
+                  return GestureDetector(
+                    onTap: (){
+                      print('Video card');
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(top: 10),
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        elevation: 0,
+                        child: Column(
+                          children: [
+                            HomeSection1UserData(),
+                            SizedBox(
+                              height: 10,
+                            ),
 
-                          Stack(
-                            children: [
-                              Container(
-                                child: VideoPlayerWidget(controller: controller,),
-                              ),
+                            Stack(
+                              children: [
+                                Container(
+                                  child: VideoPlayerWidget(controller: controller,),
+                                ),
 
-                              if(controller !=null && controller.value.isInitialized )
-                                IconButton(
-                                    onPressed: ()=>controller.setVolume(isMute?1:0),
-                                    icon: Icon(
-                                      isMute ? Icons.volume_mute :Icons.volume_up,
-                                      color: Colors.white,
-                                    )
-                                )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
+                                if(controller !=null && controller.value.isInitialized )
+                                  IconButton(
+                                      onPressed: ()=>controller.setVolume(isMute?1:0),
+                                      icon: Icon(
+                                        isMute ? Icons.volume_mute :Icons.volume_up,
+                                        color: Colors.white,
+                                      )
+                                  )
+                              ],
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
 
-                          HomeSection1PostSocial(),
-                        ],
+                            HomeSection1PostSocial(),
+                          ],
+                        ),
                       ),
                     ),
                   );
@@ -303,48 +308,53 @@ class _HomeSection1State extends State<HomeSection1> {
                       controller: _carouselSliderController,
                       unlimitedMode: true,
                       slideBuilder: (index) {
-                        return Container(
-                          child: Column(
-                            children: [
-                              Container(
-                                child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(10),
-                                    child: Image.network(
-                                        'https://images.pexels.com/photos/1191377/pexels-photo-1191377.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')),
-                              ),
-                              SizedBox(height: 3,),
-                              Container(
-                                child: Text('Story About Something Going on', style: topStoryTitle,),
-                              ),
-                              SizedBox(height: 5,),
-                              Container(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Local360',
-                                          style: breakingNewLocal,
-                                        ),
-                                        Container(
-                                          child: Image.asset(
-                                            verified,
-                                            width: size.width * 0.06,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                    Container(
-                                      child:Text(
-                                        'May 12,2022 9:30PM',
-                                        style: breakingNewTime,
-                                      ) ,
-                                    )
-                                  ],
+                        return GestureDetector(
+                          onTap: (){
+                            print('Top Stories');
+                          },
+                          child: Container(
+                            child: Column(
+                              children: [
+                                Container(
+                                  child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: Image.network(
+                                          'https://images.pexels.com/photos/1191377/pexels-photo-1191377.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')),
                                 ),
-                              )
-                            ],
+                                SizedBox(height: 3,),
+                                Container(
+                                  child: Text('Story About Something Going on', style: topStoryTitle,),
+                                ),
+                                SizedBox(height: 5,),
+                                Container(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Local360',
+                                            style: breakingNewLocal,
+                                          ),
+                                          Container(
+                                            child: Image.asset(
+                                              verified,
+                                              width: size.width * 0.06,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      Container(
+                                        child:Text(
+                                          'May 12,2022 9:30PM',
+                                          style: breakingNewTime,
+                                        ) ,
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         );
                       },

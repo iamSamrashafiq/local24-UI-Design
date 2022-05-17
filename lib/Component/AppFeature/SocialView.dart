@@ -16,22 +16,37 @@ class SocialMediaView extends StatelessWidget {
         SizedBox(height: size.height*0.03,),
 
         SocialTiles(
+          onTap: (){
+            print('Facebook');
+          },
           leadingIcon:Image.asset(facebook,width: 40,) ,
           text: 'Facebook',
         ),
         SocialTiles(
+          onTap: (){
+            print('Twitter');
+          },
           leadingIcon: Image.asset(twitter,width: 40,) ,
           text: 'Twitter',
         ),
         SocialTiles(
+          onTap: (){
+            print('Youtube');
+          },
           leadingIcon: Image.asset(youtube,width:40,) ,
           text: 'Youtube',
         ),
         SocialTiles(
+          onTap: (){
+            print('Instagram');
+          },
           leadingIcon: Image.asset(instagram,width: 40,) ,
           text: 'Instagram',
         ),
         SocialTiles(
+          onTap: (){
+            print('Whatsapp');
+          },
           leadingIcon:Image.asset(whatsapp,width: 40,) ,
           text: 'Whatsapp',
         ),

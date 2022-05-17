@@ -14,32 +14,52 @@ class AppFeatureAboutView extends StatelessWidget {
         Divider(color: Colors.grey.shade300,thickness: 1,),
         SizedBox(height: size.height*0.03,),
 
-        Container(
-          child: AboutListTiles(
-            leadingIcon: Icons.people_alt,
-            text: 'TeluguStop Team',
-            trailingIcon: Icons.keyboard_arrow_right,
+        InkWell(
+          onTap: (){
+            print('TeluguStop Team');
+          },
+          child: Container(
+            child: AboutListTiles(
+              leadingIcon: Icons.people_alt,
+              text: 'TeluguStop Team',
+              trailingIcon: Icons.keyboard_arrow_right,
+            ),
           ),
         ),
-        Container(
-          child: AboutListTiles(
-            leadingIcon: Icons.perm_contact_cal,
-            text: 'Contact Us',
-            trailingIcon: Icons.keyboard_arrow_right,
+        InkWell(
+          onTap: (){
+            print('Contact Us');
+          },
+          child: Container(
+            child: AboutListTiles(
+              leadingIcon: Icons.perm_contact_cal,
+              text: 'Contact Us',
+              trailingIcon: Icons.keyboard_arrow_right,
+            ),
           ),
         ),
-        Container(
-          child: AboutListTiles(
-            leadingIcon: Icons.privacy_tip,
-            text: 'Privacy Policy ',
-            trailingIcon: Icons.keyboard_arrow_right,
+        InkWell(
+          onTap: (){
+            print('Privacy Policy');
+          },
+          child: Container(
+            child: AboutListTiles(
+              leadingIcon: Icons.privacy_tip,
+              text: 'Privacy Policy ',
+              trailingIcon: Icons.keyboard_arrow_right,
+            ),
           ),
         ),
-        Container(
-          child: AboutListTiles(
-            leadingIcon: Icons.event_note,
-            text: 'Terms ',
-            trailingIcon: Icons.keyboard_arrow_right,
+        InkWell(
+          onTap: (){
+            print('Terms');
+          },
+          child: Container(
+            child: AboutListTiles(
+              leadingIcon: Icons.event_note,
+              text: 'Terms ',
+              trailingIcon: Icons.keyboard_arrow_right,
+            ),
           ),
         ),
 

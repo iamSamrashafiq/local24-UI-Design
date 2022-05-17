@@ -24,6 +24,7 @@ class _HomePageState extends State<HomePage>  with SingleTickerProviderStateMixi
               borderRadius: BorderRadius.circular(10),
             ),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 const SizedBox(height: 12),
                 Container(
@@ -35,8 +36,11 @@ class _HomePageState extends State<HomePage>  with SingleTickerProviderStateMixi
                     icon: Icon(Icons.clear),
                   ),
                 ),
-                //here place Ad widget inside a container
-
+                //here place Ad widget inside a contain
+                Container(
+                  height:100,
+                  width:double.infinity,
+                ),
               ],
             ),
           )

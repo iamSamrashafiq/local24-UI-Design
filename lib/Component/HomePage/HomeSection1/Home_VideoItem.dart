@@ -70,15 +70,15 @@ class BasicOverlayWidget extends StatelessWidget {
 
   Widget buildPlay() => controller.value.isPlaying
       ? Container()
-      : Container(
-        alignment: Alignment.center,
-        margin: EdgeInsets.only(top: 30),
-        height: 100,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color:  Colors.white.withOpacity(0.7)
-        ),
+      : Center(
+        child: Container(
+          height: 70,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color:  Colors.white.withOpacity(0.7)
+          ),
 
-        child: Icon(Icons.play_arrow, color: Colors.black, size:80),
-  );
+          child: Icon(Icons.play_arrow, color: Colors.black, size:50),
+  ),
+      );
 }

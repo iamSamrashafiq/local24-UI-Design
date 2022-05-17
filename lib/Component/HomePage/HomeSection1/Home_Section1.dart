@@ -9,6 +9,7 @@ import 'package:local24/Component/HomePage/HomeAds/MobAds.dart';
 import 'package:local24/Component/HomePage/HomeSection1/Home_Section1UserData.dart';
 import 'package:local24/Component/HomePage/HomeSection1/Home_Section1_PostSocial.dart';
 import 'package:local24/Constant/App_Constant.dart';
+import 'package:local24/Screens/RealEstate_Listing/CreateListing.dart';
 import 'package:video_player/video_player.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'Home_VideoItem.dart';
@@ -63,6 +64,7 @@ class _HomeSection1State extends State<HomeSection1> {
         child: Column(
           children: [
             ///post card
+
             Container(
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
               child: ListView.builder(
@@ -577,10 +579,21 @@ class _HomeSection1State extends State<HomeSection1> {
 
             SizedBox(height: 10,),
 
+            //Button to Show Listing will remove later
+
+            ElevatedButton(
+                onPressed: (){
+                  Navigator.of(context,rootNavigator: true).push(MaterialPageRoute(builder: (context)=>CreateListing()));
+                },
+                child: Text('Show Listing')
+            ),
+
+
+
             ///FaceBook Ads Card
             Container(
-              color: Colors.black54,
-              height:100 ,
+              // color: Colors.black54,
+              height:size.height*0.3 ,
               width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
               child: Card(
@@ -613,11 +626,13 @@ class _HomeSection1State extends State<HomeSection1> {
               ),
             ),
 
+
             SizedBox(height: 10,),
             /// Google Mob Ads
             MobileNativeAds(),
 
             GoogleBannerAds(),
+
 
 
 

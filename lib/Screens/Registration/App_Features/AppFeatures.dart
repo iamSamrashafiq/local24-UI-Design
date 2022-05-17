@@ -179,8 +179,10 @@ class _AppFeaturesState extends State<AppFeatures> {
                   ),
                 ),
 
+                //team , Contact us , Privacy Policy
                 AppFeatureAboutView(),
 
+                //All Social Share Icon
                 SocialMediaView(),
 
                 // SizedBox(height: size.height*0.03,),
@@ -214,13 +216,18 @@ class _AppFeaturesState extends State<AppFeatures> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    RichText(
-                      text: TextSpan(
-                        text: 'Share the app  \n',
-                        style:featureSubHeading,
-                        children: const <TextSpan>[
-                          TextSpan(text: 'Please Share your app to your friends',style:featureTxt),
-                        ],
+                    InkWell(
+                      onTap: (){
+                        print('Share App');
+                      },
+                      child: RichText(
+                        text: TextSpan(
+                          text: 'Share the app  \n',
+                          style:featureSubHeading,
+                          children: const <TextSpan>[
+                            TextSpan(text: 'Please Share your app to your friends',style:featureTxt),
+                          ],
+                        ),
                       ),
                     ),
                     Icon(Icons.keyboard_arrow_right),
@@ -230,13 +237,18 @@ class _AppFeaturesState extends State<AppFeatures> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    RichText(
-                      text: TextSpan(
-                        text: 'Rate Us  \n',
-                        style:featureSubHeading,
-                        children: const <TextSpan>[
-                          TextSpan(text: 'Please Give Rating at Playstore',style:featureTxt),
-                        ],
+                    InkWell(
+                      onTap: (){
+                        print('Rate Us');
+                      },
+                      child: RichText(
+                        text: TextSpan(
+                          text: 'Rate Us  \n',
+                          style:featureSubHeading,
+                          children: const <TextSpan>[
+                            TextSpan(text: 'Please Give Rating at Playstore',style:featureTxt),
+                          ],
+                        ),
                       ),
                     ),
                     Icon(Icons.keyboard_arrow_right),

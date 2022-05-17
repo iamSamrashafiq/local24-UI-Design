@@ -28,77 +28,74 @@ class _Register3State extends State<Register3> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Form(
-                key: _formKey,
-                child: Container(
-                  height: size.height*1,
-                  child: ListView(
-                    physics:NeverScrollableScrollPhysics() ,
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    children: [
-                      Container(
-                        child: Text('How do you want to use your profile',style: textFieldHeader,),
+      body: Container(
+        padding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Form(
+              key: _formKey,
+              child: Flexible(
+               fit: FlexFit.loose,
+                child: ListView(
+                  scrollDirection: Axis.vertical,
+                  children: [
+                    Container(
+                      child: Text('How do you want to use your profile',style: textFieldHeader,),
+                    ),
+                    SizedBox(height:5,),
+                    Container(
+                      child: DropdownButtonFormField(
+                        decoration: DropDownButtonDecoration('Select Option'),
+                        value:_selectPro,
+                        isExpanded: true,
+                        validator: (value) {
+                          if (value.toString().isEmpty) {
+                            return "can't empty";
+                          } else {
+                            return null;
+                          }
+                        },
+                        autovalidateMode: AutovalidateMode.always,
+                        items: profileFor.map((String val) {
+                          return DropdownMenuItem(
+                            value: val,
+                            child: Text(
+                              val,
+                            ),
+                          );
+                        }).toList(),
+                        onChanged: (value) {
+                          if (value == 'Government') {
+                            setState(() {
+                              selectedWidgetMaker = WidgetMaker.Government;
+                            });
+                          } else  {
+                            setState(() {
+                              selectedWidgetMaker = WidgetMaker.Local;
+                            });
+                          }
+                        },
                       ),
-                      SizedBox(height:5,),
-                      Container(
-                        child: DropdownButtonFormField(
-                          decoration: DropDownButtonDecoration('Select Option'),
-                          value:_selectPro,
-                          isExpanded: true,
-                          validator: (value) {
-                            if (value.toString().isEmpty) {
-                              return "can't empty";
-                            } else {
-                              return null;
-                            }
-                          },
-                          autovalidateMode: AutovalidateMode.always,
-                          items: profileFor.map((String val) {
-                            return DropdownMenuItem(
-                              value: val,
-                              child: Text(
-                                val,
-                              ),
-                            );
-                          }).toList(),
-                          onChanged: (value) {
-                            if (value == 'Government') {
-                              setState(() {
-                                selectedWidgetMaker = WidgetMaker.Government;
-                              });
-                            } else  {
-                              setState(() {
-                                selectedWidgetMaker = WidgetMaker.Local;
-                              });
-                            }
-                          },
-                        ),
-                      ),
-                      SizedBox(height: 20,),
+                    ),
+                    SizedBox(height: 20,),
 
-                      Container(
-                        child: Column(
-                          children: [
-                            Container(
-                              child: getCustomWidget(),
-                            )
-                          ],
-                        ),
+                    Container(
+                      child: Column(
+                        children: [
+                          Container(
+                            child: getCustomWidget(),
+                          )
+                        ],
                       ),
+                    ),
 
-                    ],
-                  ),
+                  ],
                 ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );

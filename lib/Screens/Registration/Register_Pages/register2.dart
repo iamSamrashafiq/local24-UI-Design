@@ -128,37 +128,90 @@ class _Register2State extends State<Register2> {
                       ),
                     ),
                     SizedBox(height: size.height*0.01,),
-                    GestureDetector(
-                      onTap: (){
-                        showNumberDialog(context);
-                      },
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black26),
-                          borderRadius: BorderRadius.circular(10),
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: (){
+                            showNumberDialog(context);
+                          },
+                          child: Container(
+                            width: size.width*0.7,
+                            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black26),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: interests.length == 0
+                                ? Text(
+                              "Enter your Interest",
+                              style: TextStyle(color: Colors.grey.shade400, fontSize: 15.0,fontFamily: poppinsRegular),
+                              textAlign: TextAlign.start,
+                            )
+                                : Wrap(
+                              runSpacing: 6,
+                              spacing: 6,
+                              children: List.from(interests.map((e) => chipBuilder(
+                                onTap: () {
+                                  setState(() {
+                                    interests.remove(e);
+                                  });
+                                },
+                                title: e,
+                              ))),
+                            ),
+                          ),
                         ),
-                        child: interests.length == 0
-                            ? Text(
-                          "Enter your Interest",
-                          style: TextStyle(color: Colors.grey.shade400, fontSize: 15.0,fontFamily: poppinsRegular),
-                          textAlign: TextAlign.start,
-                        )
-                            : Wrap(
-                          runSpacing: 6,
-                          spacing: 6,
-                          children: List.from(interests.map((e) => chipBuilder(
-                            onTap: () {
-                              setState(() {
-                                interests.remove(e);
-                              });
+                        SizedBox(width: 4,),
+                        Container(
+                          width: size.width*0.2,
+                          height: size.height*0.1,
+                          child:CustomButton(
+                            press: (){
+                              showNumberDialog(context);
                             },
-                            title: e,
-                          ))),
+                            radius: 10,
+                            height: 0.0,
+                            width: 0.0,
+                            color: buttonColor,
+                            text: 'Add',
+                          ) ,
                         ),
-                      ),
+
+                      ],
                     ),
+                    SizedBox(height: 10,),
+
+                    // GestureDetector(
+                    //   onTap: (){
+                    //     showNumberDialog(context);
+                    //   },
+                    //   child: Container(
+                    //     width: MediaQuery.of(context).size.width,
+                    //     padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                    //     decoration: BoxDecoration(
+                    //       border: Border.all(color: Colors.black26),
+                    //       borderRadius: BorderRadius.circular(10),
+                    //     ),
+                    //     child: interests.length == 0
+                    //         ? Text(
+                    //       "Enter your Interest",
+                    //       style: TextStyle(color: Colors.grey.shade400, fontSize: 15.0,fontFamily: poppinsRegular),
+                    //       textAlign: TextAlign.start,
+                    //     )
+                    //         : Wrap(
+                    //       runSpacing: 6,
+                    //       spacing: 6,
+                    //       children: List.from(interests.map((e) => chipBuilder(
+                    //         onTap: () {
+                    //           setState(() {
+                    //             interests.remove(e);
+                    //           });
+                    //         },
+                    //         title: e,
+                    //       ))),
+                    //     ),
+                    //   ),
+                    // ),
 
                     // CustomTextFormField(
                     //   hintText: 'Extra',

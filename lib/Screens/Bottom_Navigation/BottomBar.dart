@@ -46,7 +46,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: CustomAppBar(),
+      // appBar: CustomAppBar(),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
           // Navigator.pushNamed(context, RouteConstants.filterPage);

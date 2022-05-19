@@ -54,6 +54,7 @@ const bottomNavLabelStyle=TextStyle(fontFamily:poppinsRegular,fontSize: 9, );
 const bottomNavLabelSelectedStyle=TextStyle(fontFamily:poppinsRegular,fontSize: 9, );
 
 //Home
+const menuItems = TextStyle(fontFamily: poppinsRegular,fontSize: 14,color: Colors.black);
 const postTitle = TextStyle(fontFamily: poppinsBold,fontSize: 13, color: Colors.black);
 const postUserName = TextStyle(fontFamily: poppinsRegular,fontSize: 12, color: Colors.black);
 const postDetail = TextStyle(fontFamily: poppinsRegular,fontSize: 10, color: Colors.grey);

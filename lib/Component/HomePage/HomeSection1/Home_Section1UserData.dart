@@ -23,10 +23,37 @@ class HomeSection1UserData extends StatelessWidget {
                   style: postTitle,
                 ),
               ),
-              FaIcon(
-                FontAwesomeIcons.ellipsis,
-                color: Colors.grey,
-              )
+              // FaIcon(
+              //   FontAwesomeIcons.ellipsis,
+              //   color: Colors.grey,
+              // )
+              PopupMenuButton(
+                  icon: FaIcon(FontAwesomeIcons.ellipsis,color: Colors.grey,),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+                    const PopupMenuItem(
+                      child: ListTile(
+                        // leading: Icon(Icons.add),
+                        title: Text('Save',style: menuItems,),
+                      ),
+                    ),
+                    const PopupMenuItem(
+                      child: ListTile(
+                        // leading: Icon(Icons.anchor),
+                        title: Text('Report',style: menuItems,),
+                      ),
+                    ),
+                    const PopupMenuItem(
+                      child: ListTile(
+                        // leading: Icon(Icons.anchor),
+                        title: Text('Share',style: menuItems,),
+                      ),
+                    ),
+
+                  ]
+              ),
             ],
           ),
         ),

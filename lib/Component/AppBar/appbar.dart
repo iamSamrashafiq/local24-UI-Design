@@ -5,15 +5,19 @@ import 'package:local24/Constant/App_Constant.dart';
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   final Size preferredSize;
+  // final PreferredSizeWidget bottom;
+  final Widget tab;
 
 
-  CustomAppBar(
-      { Key key,}) : preferredSize = Size.fromHeight(60.0),
+  CustomAppBar({ Key key, this.tab }) : preferredSize = Size.fromHeight(60.0),
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
+    return SliverAppBar(
+      floating: true,
+      snap: true,
+      bottom: tab,
       elevation: 0,
       leadingWidth: 170,
       leading:Container(

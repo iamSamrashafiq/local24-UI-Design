@@ -64,9 +64,8 @@ class _HomeSection1State extends State<HomeSection1> {
         child: Column(
           children: [
             ///post card
-
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          Container(
+              padding: EdgeInsets.symmetric( horizontal: 10),
               child: ListView.builder(
                 itemCount: 2,
                 shrinkWrap: true,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:local24/Component/AppBar/appbar.dart';
 import 'package:local24/Component/HomePage/HomeSection1/Home_Section1.dart';
 import 'package:local24/Constant/App_Constant.dart';
 
@@ -61,50 +62,74 @@ class _HomePageState extends State<HomePage>  with SingleTickerProviderStateMixi
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return DefaultTabController(
-      length: 4,
+      length: 10,
       child: Scaffold(
+        // appBar: CustomAppBar(),
         backgroundColor: homeBg,
-        body:  Container(
-            child: Column(
-              children: [
-                SizedBox(height: 10,),
+        body:  NestedScrollView(
+          floatHeaderSlivers: true,
+          headerSliverBuilder: (context, innerBoxIsScrolled) => [
+            CustomAppBar(
+              tab:  TabBar(
+              indicatorWeight: 3,
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                isScrollable: true,
+                controller: _tabController,
+                unselectedLabelColor: Colors.black,
+                labelColor: Colors.blue,
+                tabs: list,
+              ),
+            ),
+          ],
+          body: Container(
+              child:
+              Column(
+                children: [
+                  // Container(
+                  //   decoration: BoxDecoration(
+                  //     color: Colors.white,
+                  //       border: Border(
+                  //           bottom: BorderSide(
+                  //               color: Colors.grey.shade300, width: 1))),
+                  //
+                  //   child: TabBar(
+                  //     isScrollable: true,
+                  //
+                  //     controller: _tabController,
+                  //     unselectedLabelColor: Colors.black,
+                  //     labelColor: Colors.blue,
+                  //     tabs: list,
+                  //   ),
+                  // ),
 
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                      border: Border(
-                          bottom: BorderSide(
-                              color: Colors.grey.shade300, width: 1))),
-
-                  child: TabBar(
-                    controller: _tabController,
-                    unselectedLabelColor: Colors.black,
-                    labelColor: Colors.blue,
-                    tabs: list,
-                  ),
-                ),
-
-                Expanded(
-                  child: Container(
-                    color: homeBg,
-                    child: TabBarView(
-                      controller: _tabController,
-                      physics: NeverScrollableScrollPhysics(),
-                      children: [
-                        HomeSection1(),
-                        Text('heloo 2'),
-                        Text('heloo3'),
-                        Text('heloo4'),
-                      ],
+                  Expanded(
+                    child: Container(
+                      color: homeBg,
+                      child: TabBarView(
+                        controller: _tabController,
+                        physics: NeverScrollableScrollPhysics(),
+                        children: [
+                          HomeSection1(),
+                          Text('heloo 2'),
+                          Text('heloo3'),
+                          Text('heloo4'),
+                          Text('heloo5'),
+                          Text('heloo6'),
+                          Text('heloo7'),
+                          Text('heloo8'),
+                          Text('heloo9'),
+                          Text('heloo10'),
+                        ],
+                      ),
                     ),
                   ),
-                ),
 
 
 
-              ],
+                ],
+              ),
             ),
-          ),
+        ),
         )
     );
   }
@@ -123,6 +148,24 @@ class _HomePageState extends State<HomePage>  with SingleTickerProviderStateMixi
     ),
     Tab(
       child: Text('Section 4', style: TextStyle(fontFamily: poppinsRegular,fontSize:12)),
-    )
+    ),
+    Tab(
+      child: Text('Section 5', style: TextStyle(fontFamily: poppinsRegular,fontSize:12)),
+    ),
+    Tab(
+      child: Text('Section 6', style: TextStyle(fontFamily: poppinsRegular,fontSize:12)),
+    ),
+    Tab(
+      child: Text('Section 7', style: TextStyle(fontFamily: poppinsRegular,fontSize:12)),
+    ),
+    Tab(
+      child: Text('Section 8', style: TextStyle(fontFamily: poppinsRegular,fontSize:12)),
+    ),
+    Tab(
+      child: Text('Section 9', style: TextStyle(fontFamily: poppinsRegular,fontSize:12)),
+    ),
+    Tab(
+      child: Text('Section 10', style: TextStyle(fontFamily: poppinsRegular,fontSize:12)),
+    ),
   ];
 }

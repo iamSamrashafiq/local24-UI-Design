@@ -1,12 +1,15 @@
+
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:launch_review/launch_review.dart';
 import 'package:local24/Component/AppFeature/AboutView.dart';
 import 'package:local24/Component/AppFeature/SocialView.dart';
 import 'package:local24/Constant/App_Constant.dart';
 import 'package:fswitch/fswitch.dart';
+import 'package:share_plus/share_plus.dart';
 
 enum NewsDisplayMode { AppMode, ListMode, ShortMode }
-
+enum PostCount {Fifty,Hundred,TwoHundred,ThreeHundred  }
 class AppFeatures extends StatefulWidget {
   const AppFeatures({Key key}) : super(key: key);
 
@@ -17,10 +20,14 @@ class AppFeatures extends StatefulWidget {
 class _AppFeaturesState extends State<AppFeatures> {
   bool switchVal = true;
   NewsDisplayMode _mode =NewsDisplayMode.AppMode;
+  PostCount postCount = PostCount.Fifty;
   bool first = false;
   bool second = false;
   bool third = false;
   bool forth = false;
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -133,17 +140,28 @@ class _AppFeaturesState extends State<AppFeatures> {
                   ),
                 ),
                 SizedBox(height: size.height*0.03,),
+
                 Container(
-                  child: RichText(
-                    text: TextSpan(
-                      text: 'Feed Posts Count  \n',
-                      style:featureSubHeading,
-                      children: const <TextSpan>[
-                        TextSpan(text: '50',style:featureTxt),
-                      ],
+                  child: ExpandablePanel(
+                    header:  RichText(
+                      text: TextSpan(
+                        text: 'FeedPost Count  \n',
+                        style:featureSubHeading,
+                        children: <TextSpan>[
+                          TextSpan(text:'',style:featureTxt),
+                        ],
+                      ),
                     ),
+                    expanded:PostCounting(context) ,
+                    collapsed: null,
+                    theme: ExpandableThemeData(
+                      iconColor: Colors.grey,
+                    ),
+
                   ),
                 ),
+
+
                 SizedBox(height: size.height*0.03,),
                 Divider(color: Colors.grey.shade300,thickness: 1,),
                 SizedBox(height: size.height*0.03,),
@@ -185,40 +203,15 @@ class _AppFeaturesState extends State<AppFeatures> {
                 //All Social Share Icon
                 SocialMediaView(),
 
-                // SizedBox(height: size.height*0.03,),
-                // Divider(color: Colors.grey.shade300,thickness: 1,),
-                // SizedBox(height: size.height*0.03,),
-                //
-                // ListTileWithIcon(
-                //   leadingIcon:FaIcon(FontAwesomeIcons.facebookSquare,color: Colors.indigo,size: 30,) ,
-                //   text: 'Facebook',
-                // ),
-                // ListTileWithIcon(
-                //   leadingIcon: FaIcon(FontAwesomeIcons.twitterSquare,color: Colors.blueAccent,size: 30,),
-                //   text: 'Twitter',
-                // ),
-                // ListTileWithIcon(
-                //   leadingIcon: FaIcon(FontAwesomeIcons.youtubeSquare,color: Colors.redAccent,size: 30,),
-                //   text: 'Youtube',
-                // ),
-                // ListTileWithIcon(
-                //   leadingIcon: FaIcon(FontAwesomeIcons.instagramSquare,color: Colors.red,size: 30),
-                //   text: 'Instagram',
-                // ),
-                // ListTileWithIcon(
-                //   leadingIcon: FaIcon(FontAwesomeIcons.whatsappSquare,color: Colors.green,size: 30,),
-                //   text: 'Instagram',
-                // ),
-                // SizedBox(height: size.height*0.03,),
-                // Divider(color: Colors.grey.shade300,thickness: 1,),
-                // SizedBox(height: size.height*0.03,),
+
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     InkWell(
                       onTap: (){
-                        print('Share App');
+                        ///change link here
+                        Share.share('check out my App http://geo.telugustop.com/');
                       },
                       child: RichText(
                         text: TextSpan(
@@ -239,7 +232,10 @@ class _AppFeaturesState extends State<AppFeatures> {
                   children: [
                     InkWell(
                       onTap: (){
-                        print('Rate Us');
+                        // _rateUs();
+                        ///add your app Id to open rate us page on google play
+                       LaunchReview.launch(androidAppId: "com.whatsapp",);
+
                       },
                       child: RichText(
                         text: TextSpan(
@@ -391,27 +387,74 @@ class _AppFeaturesState extends State<AppFeatures> {
     ],
   );
 
+  Widget PostCounting(BuildContext context) =>Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      ListTile(
+        dense:true,
+        contentPadding: EdgeInsets.only(left: 0.0, right: 0.0,top: 5.0),
+        title: const Text('50',style: featureListTitle,),
+        leading: Radio(
+          activeColor: buttonColor,
+          value: PostCount.Fifty,
+          groupValue: postCount,
+          onChanged: (PostCount value) {
+            setState(() {
+              postCount = value;
+
+            });
+          },
+        ),
+      ),
+      ListTile(
+        dense:true,
+        contentPadding: EdgeInsets.only(left: 0.0, right: 0.0,top: 5.0),
+        title: const Text('100',style: featureListTitle,),
+        leading: Radio(
+          activeColor: buttonColor,
+          value: PostCount.Hundred,
+          groupValue: postCount,
+          onChanged: (PostCount value) {
+            setState(() {
+              postCount = value;
+            });
+          },
+        ),
+      ),
+      ListTile(
+        dense:true,
+        contentPadding: EdgeInsets.only(left: 0.0, right: 0.0,top: 5.0),
+        title: const Text('200',style: featureListTitle,),
+        leading: Radio(
+          activeColor: buttonColor,
+          value: PostCount.TwoHundred,
+          groupValue:postCount,
+          onChanged: (PostCount value) {
+            setState(() {
+              postCount = value;
+            });
+          },
+        ),
+      ),
+      ListTile(
+        dense:true,
+        contentPadding: EdgeInsets.only(left: 0.0, right: 0.0,top: 5.0),
+        title: const Text('300',style: featureListTitle,),
+        leading: Radio(
+          activeColor: buttonColor,
+          value: PostCount.ThreeHundred,
+          groupValue:postCount,
+          onChanged: (PostCount value) {
+            setState(() {
+              postCount = value;
+            });
+          },
+        ),
+      ),
+    ],
+  );
+
 }
 
-// class ListTileWithIcon extends StatelessWidget {
-//   String text;
-//   Widget leadingIcon;
-//  ListTileWithIcon({
-//     Key key,
-//     this.text,
-//     this.leadingIcon,
-//   }) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListTile(
-//       dense: true,
-//       contentPadding: EdgeInsets.only(left: 0.0,right:0.0),
-//       leading: leadingIcon,
-//       title: Text(text),
-//       trailing: Icon(Icons.keyboard_arrow_right),
-//     );
-//   }
-// }
 
 

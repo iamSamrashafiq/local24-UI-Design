@@ -4,6 +4,7 @@ import 'package:local24/Component/Widget/CustomButton_widget.dart';
 import 'package:local24/Component/Widget/CustomOutline_Button.dart';
 import 'package:local24/Constant/App_Constant.dart';
 import 'package:local24/Routes/Route_Constant.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class IntroductionScreen extends StatelessWidget {
   const IntroductionScreen({Key key}) : super(key: key);
@@ -76,8 +77,18 @@ class IntroductionScreen extends StatelessWidget {
                 child: Text("By Continuing,I agree with the",style: introContinue,textAlign: TextAlign.center,),
               ),
               SizedBox(height: size.height*0.01,),
-              Container(
-                child: Text("Privacy Policy,Terms & Condition",style: introTerm,textAlign: TextAlign.center,),
+              InkWell(
+                onTap: () async {
+                  final Uri url = Uri.parse('http://geo.telugustop.com//privacy');
+                  if(await canLaunchUrl(url) ){
+                      await launchUrl(
+                        url,
+                      );
+                  }
+                },
+                child: Container(
+                  child: Text("Privacy Policy,Terms & Condition",style: introTerm,textAlign: TextAlign.center,),
+                ),
               ),
 
 

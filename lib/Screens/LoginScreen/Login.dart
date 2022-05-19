@@ -3,9 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:local24/Component/Widget/CustomButton_widget.dart';
 import 'package:local24/Component/Widget/CustomTextField.dart';
 import 'package:local24/Constant/App_Constant.dart';
-import 'package:local24/Routes/Route_Constant.dart';
 import 'package:local24/Screens/Bottom_Navigation/BottomBar.dart';
-import 'package:local24/Screens/HomeScreen/Home.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key key}) : super(key: key);
@@ -94,6 +92,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: CustomButton(
                   text: "Login",
                   press: (){
+                    // if(_formKey.currentState.validate()){
+                    //     //write function here for login
+                    //
+                    // }else{
+                    // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Please fill the form correctly  ',style: TextStyle(fontFamily: poppinsRegular,fontSize: 15),)));
+                    // }
                     Navigator.of(context).push(MaterialPageRoute(builder: (context)=>BottomNavBar()));
                   },
                   radius: 25,

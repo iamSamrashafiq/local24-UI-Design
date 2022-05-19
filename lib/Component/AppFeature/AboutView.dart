@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:local24/Component/Widget/AboutTiles.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AppFeatureAboutView extends StatelessWidget {
   const AppFeatureAboutView({Key key}) : super(key: key);
@@ -15,8 +16,13 @@ class AppFeatureAboutView extends StatelessWidget {
         SizedBox(height: size.height*0.03,),
 
         InkWell(
-          onTap: (){
-            print('TeluguStop Team');
+          onTap: ()async{
+            final Uri url = Uri.parse('http://geo.telugustop.com//privacy');
+              if(await canLaunchUrl(url) ){
+                await launchUrl(
+                  url,
+                );
+            }
           },
           child: Container(
             child: AboutListTiles(
@@ -27,8 +33,13 @@ class AppFeatureAboutView extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: (){
-            print('Contact Us');
+          onTap: ()async{
+            final Uri url = Uri.parse('http://geo.telugustop.com//privacy');   //change the link
+            if(await canLaunchUrl(url) ){
+              await launchUrl(
+                url,
+              );
+            }
           },
           child: Container(
             child: AboutListTiles(
@@ -39,8 +50,13 @@ class AppFeatureAboutView extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: (){
-            print('Privacy Policy');
+          onTap: ()async{
+            final Uri url = Uri.parse('http://geo.telugustop.com//privacy'); //change link here
+            if(await canLaunchUrl(url) ){
+              await launchUrl(
+                url,
+              );
+            }
           },
           child: Container(
             child: AboutListTiles(
@@ -51,8 +67,13 @@ class AppFeatureAboutView extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: (){
-            print('Terms');
+          onTap: ()async{
+            final Uri url = Uri.parse('http://geo.telugustop.com//privacy');
+            if(await canLaunchUrl(url) ){
+              await launchUrl(
+                url,
+              );
+            }
           },
           child: Container(
             child: AboutListTiles(

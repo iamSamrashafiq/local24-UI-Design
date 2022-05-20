@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_slider/carousel_slider.dart';
 import 'package:flutter_carousel_slider/carousel_slider_indicators.dart';
@@ -13,6 +15,7 @@ import 'package:local24/Screens/RealEstate_Listing/CreateListing.dart';
 import 'package:video_player/video_player.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'Home_VideoItem.dart';
+import 'package:http/http.dart' as http;
 import 'package:facebook_audience_network/facebook_audience_network.dart';
 
 class HomeSection1 extends StatefulWidget {
@@ -23,7 +26,33 @@ class HomeSection1 extends StatefulWidget {
 }
 
 class _HomeSection1State extends State<HomeSection1> {
+  List<String> dogImage =[];
+  
+  List<String> item = List.generate(15, (index) => 'Item ${index+1}');
 
+  final _scrollController = new ScrollController();
+
+  //sample fatching remove this latter on
+  fetch() async{
+    final Uri url = Uri.parse('https://dog.ceo/api/breeds/image/random');
+    final res= await http.get(url);
+    if(res.statusCode ==200){
+      setState(() {
+        dogImage.add(json.decode(res.body)['message']);
+      });
+    }else{
+      throw Exception();
+    }
+  }
+
+  fetchOnlyThree(){
+    for(int i = 0; i<3; i++){
+      setState(() {
+        fetch();
+      });
+
+    }
+  }
   CarouselSliderController _carouselSliderController=CarouselSliderController();
   VideoPlayerController controller;
   final urlLandscapeVideo =
@@ -33,6 +62,7 @@ class _HomeSection1State extends State<HomeSection1> {
   @override
   void initState() {
     super.initState();
+
     FacebookAudienceNetwork.init(
         testingId: "a77955ee-3304-4635-be65-81029b0f5201", //optional
         // iOSAdvertiserTrackingEnabled: fale //default false
@@ -41,11 +71,28 @@ class _HomeSection1State extends State<HomeSection1> {
       ..addListener(() => setState(() {}))
       ..setLooping(true)
       ..initialize().then((_) => controller.pause());
+    fetchOnlyThree();
+    print('Hello');
+      print(_scrollController);
+    _scrollController.addListener(() {
+      if(_scrollController.position.maxScrollExtent == _scrollController.position.pixels){
+        fetchOnlyThree();
+      }
+    });
+
   }
+
+ // Future   fetchItem() async{
+ //    setState(() {
+ //      item.addAll(['Item A','Item b','Item c']);
+ //    });
+ //  }
+
 
   @override
   void dispose() {
     controller.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -62,12 +109,13 @@ class _HomeSection1State extends State<HomeSection1> {
       ),
       body: SingleChildScrollView(
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             ///post card
           Container(
               padding: EdgeInsets.symmetric( horizontal: 10),
               child: ListView.builder(
-                itemCount: 2,
+                itemCount: 1,
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 physics: NeverScrollableScrollPhysics(),
@@ -84,82 +132,6 @@ class _HomeSection1State extends State<HomeSection1> {
                         elevation: 0,
                         child: Column(
                           children: [
-                            // Container(
-                            //   margin: EdgeInsets.symmetric(
-                            //       vertical: 10, horizontal: 10),
-                            //   child: Row(
-                            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            //     children: [
-                            //       Container(
-                            //         child: Text(
-                            //           'New Restaurant open in Town',
-                            //           style: postTitle,
-                            //         ),
-                            //       ),
-                            //       FaIcon(
-                            //         FontAwesomeIcons.ellipsis,
-                            //         color: Colors.grey,
-                            //       )
-                            //     ],
-                            //   ),
-                            // ),
-                            // Container(
-                            //   margin: EdgeInsets.symmetric(horizontal: 10),
-                            //   child: Row(
-                            //     children: [
-                            //       Container(
-                            //         child: CircleAvatar(
-                            //             radius: 25,
-                            //             backgroundImage: NetworkImage(
-                            //               'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-                            //             )
-                            //             // child: Image.network('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'),
-                            //             ),
-                            //       ),
-                            //       Container(
-                            //         padding: EdgeInsets.only(left: 5),
-                            //         child: Column(
-                            //           crossAxisAlignment:
-                            //               CrossAxisAlignment.start,
-                            //           children: [
-                            //             Row(
-                            //               children: [
-                            //                 Text(
-                            //                   'local360',
-                            //                   style: postUserName,
-                            //                 ),
-                            //                 Container(
-                            //                   child: Image.asset(
-                            //                     verified,
-                            //                     width: size.width * 0.04,
-                            //                   ),
-                            //                 )
-                            //               ],
-                            //             ),
-                            //             Container(
-                            //               width: size.width * 0.7,
-                            //               child: Row(
-                            //                 mainAxisAlignment:
-                            //                     MainAxisAlignment.spaceBetween,
-                            //                 children: [
-                            //                   Text(
-                            //                     'New Delhi',
-                            //                     style: postDetail,
-                            //                   ),
-                            //                   Text(
-                            //                     '5 hour ago',
-                            //                     style: postDetail,
-                            //                     textAlign: TextAlign.right,
-                            //                   ),
-                            //                 ],
-                            //               ),
-                            //             )
-                            //           ],
-                            //         ),
-                            //       )
-                            //     ],
-                            //   ),
-                            // ),
                             HomeSection1UserData(), //copy paste this page code here to make every thing work in Index Id
                             SizedBox(
                               height: 10,
@@ -183,6 +155,136 @@ class _HomeSection1State extends State<HomeSection1> {
                     ),
                   );
                 },
+              ),
+            ),
+
+            ///Pagination with sample data-Post Card
+            Container(
+              // height: size.height*0.6,
+              padding: EdgeInsets.symmetric( horizontal: 10),
+              child: ListView.builder(
+                controller: _scrollController,
+                itemCount: dogImage.length ,
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                // physics: NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+
+                    return GestureDetector(
+                      onTap: (){
+                        print('Open this Card');
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(top: 10),
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                          elevation: 0,
+                          child: Column(
+                            children: [
+                              // Container(
+                              //   margin: EdgeInsets.symmetric(
+                              //       vertical: 10, horizontal: 10),
+                              //   child: Row(
+                              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              //     children: [
+                              //       Container(
+                              //         child: Text(
+                              //           'New Restaurant open in Town',
+                              //           style: postTitle,
+                              //         ),
+                              //       ),
+                              //       FaIcon(
+                              //         FontAwesomeIcons.ellipsis,
+                              //         color: Colors.grey,
+                              //       )
+                              //     ],
+                              //   ),
+                              // ),
+                              // Container(
+                              //   margin: EdgeInsets.symmetric(horizontal: 10),
+                              //   child: Row(
+                              //     children: [
+                              //       Container(
+                              //         child: CircleAvatar(
+                              //             radius: 25,
+                              //             backgroundImage: NetworkImage(
+                              //               'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
+                              //             )
+                              //             // child: Image.network('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'),
+                              //             ),
+                              //       ),
+                              //       Container(
+                              //         padding: EdgeInsets.only(left: 5),
+                              //         child: Column(
+                              //           crossAxisAlignment:
+                              //               CrossAxisAlignment.start,
+                              //           children: [
+                              //             Row(
+                              //               children: [
+                              //                 Text(
+                              //                   'local360',
+                              //                   style: postUserName,
+                              //                 ),
+                              //                 Container(
+                              //                   child: Image.asset(
+                              //                     verified,
+                              //                     width: size.width * 0.04,
+                              //                   ),
+                              //                 )
+                              //               ],
+                              //             ),
+                              //             Container(
+                              //               width: size.width * 0.7,
+                              //               child: Row(
+                              //                 mainAxisAlignment:
+                              //                     MainAxisAlignment.spaceBetween,
+                              //                 children: [
+                              //                   Text(
+                              //                     'New Delhi',
+                              //                     style: postDetail,
+                              //                   ),
+                              //                   Text(
+                              //                     '5 hour ago',
+                              //                     style: postDetail,
+                              //                     textAlign: TextAlign.right,
+                              //                   ),
+                              //                 ],
+                              //               ),
+                              //             )
+                              //           ],
+                              //         ),
+                              //       )
+                              //     ],
+                              //   ),
+                              // ),
+                              HomeSection1UserData(), //copy paste this page code here to make every thing work in Index Id
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                padding: EdgeInsets.symmetric(horizontal: 5),
+                                child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: Image.network(
+                                      dogImage[index],fit: BoxFit.cover,)),
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+
+                              HomeSection1PostSocial(),
+
+                            ],
+                          ),
+                        ),
+                      ),
+
+                      // child: ListTile(title: Text(item[index]),),
+                    );
+
+                  }
+
               ),
             ),
 
